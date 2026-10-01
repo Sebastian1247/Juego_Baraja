@@ -1,0 +1,15 @@
+# Compilados de Java
+bin/
+*.class
+
+# Archivo temporal que genera la extension Code Runner de VSCode
+tempCodeRunnerFile.java
+
+# Enunciado de la tarea (material del curso, no se sube al repo)
+JuegoBarajaRequisitos.jpeg
+
+# Explicacion del flujo de la partida (documento de apoyo, no se sube al repo)
+Blackjack - Flujo de una partida.docx
+
+# Diagrama de otro proyecto usado como referencia
+JuegoVidaDiagramaClases.drawio
