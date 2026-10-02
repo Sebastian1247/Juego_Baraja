@@ -3,12 +3,12 @@ public record Carta(Palo palo, Rango rango) {
         return rango == Rango.AS;
     }
 
-    public boolean esFigura(){
+    public boolean esFigura() {
         return rango == Rango.JOTA || rango == Rango.REINA || rango == Rango.REY;
     }
 
     @Override 
     public String toString() {
-        return rango.getNombre() + " de " + palo.getNombre();
+        return rango.getNombre() + " de " + palo.getSimbolo();
     }
 }

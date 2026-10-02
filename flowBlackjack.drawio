@@ -1,0 +1,70 @@
+<mxfile host="65bd71144e">
+    <diagram id="_PtLAe3FGECu74G2H_h_" name="Page-1">
+        <mxGraphModel dx="732" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-1" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="Blackjack" vertex="1">
+                    <mxGeometry height="100" width="100" x="10" y="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="PUNTOS_BLACKJACK = 21" vertex="1">
+                    <mxGeometry height="30" width="180" x="130" y="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="this.APUESTA_MINIMA = APUESTA_MINIMA" vertex="1">
+                    <mxGeometry height="30" width="270" x="85" y="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-14" edge="1" parent="1" source="8OBQTiKTOw6oGG1ijHhW-4" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8OBQTiKTOw6oGG1ijHhW-5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="595" y="140" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-4" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="registrarJugadores" vertex="1">
+                    <mxGeometry height="50" width="130" x="530" y="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-16" edge="1" parent="1" source="8OBQTiKTOw6oGG1ijHhW-5" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8OBQTiKTOw6oGG1ijHhW-10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="print(&quot;Registre a los jugadores&quot;)" vertex="1">
+                    <mxGeometry height="30" width="190" x="500" y="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-19" edge="1" parent="1" source="8OBQTiKTOw6oGG1ijHhW-6" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="8OBQTiKTOw6oGG1ijHhW-12">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="595" y="400" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="jugadores.add(nombre, 1000, i)" vertex="1">
+                    <mxGeometry height="30" width="280" x="455" y="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-18" edge="1" parent="1" source="8OBQTiKTOw6oGG1ijHhW-9" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8OBQTiKTOw6oGG1ijHhW-6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="nombre = readString()" vertex="1">
+                    <mxGeometry height="30" width="130" x="530" y="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-17" edge="1" parent="1" source="8OBQTiKTOw6oGG1ijHhW-10" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8OBQTiKTOw6oGG1ijHhW-9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="for(i = 0; i++)" vertex="1">
+                    <mxGeometry height="30" width="90" x="550" y="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-21" edge="1" parent="1" source="8OBQTiKTOw6oGG1ijHhW-12" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="8OBQTiKTOw6oGG1ijHhW-10">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="410" y="435"/>
+                            <mxPoint x="410" y="215"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-12" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="i &amp;lt; cantidadJugadores" vertex="1">
+                    <mxGeometry height="70" width="150" x="520" y="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-22" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="fin" vertex="1">
+                    <mxGeometry height="30" width="50" x="570" y="510" as="geometry"/>
+                </mxCell>
+                <mxCell id="8OBQTiKTOw6oGG1ijHhW-23" edge="1" parent="1" source="8OBQTiKTOw6oGG1ijHhW-12" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="8OBQTiKTOw6oGG1ijHhW-22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

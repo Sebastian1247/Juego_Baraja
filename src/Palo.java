@@ -1,17 +1,17 @@
 public enum Palo {
     
-    CORAZON("Corazón"),
-    DIAMANTE("Diamante"),
-    TREBOL("Trébol"),
-    PICA("Pica");
+    CORAZON("♥"),
+    DIAMANTE("♢"),
+    TREBOL("♣"),
+    PICA("♠");
 
-    private final String nombre;
+    private final String simbolo;
 
-    Palo(String nombre) {
-        this.nombre = nombre;
+    Palo(String simbolo) {
+        this.simbolo = simbolo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getSimbolo() {
+        return simbolo;
     }
 }
