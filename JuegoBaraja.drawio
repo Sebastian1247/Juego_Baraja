@@ -14,19 +14,28 @@
           <mxGeometry height="26" width="200" y="34" as="geometry" />
         </mxCell>
         <mxCell id="juego" parent="1" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="JuegoDeCartas" vertex="1">
-          <mxGeometry height="86" width="300" x="40" y="0" as="geometry" />
+          <mxGeometry height="164" width="300" x="40" y="-40" as="geometry" />
         </mxCell>
         <mxCell id="juego-1" parent="juego" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="300" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="juego-2" parent="juego" style="text;fontStyle=2;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ iniciarPartida(): void" vertex="1">
+        <mxCell id="juego-2" parent="juego" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ iniciarPartida(): void {leaf}" vertex="1">
           <mxGeometry height="26" width="300" y="34" as="geometry" />
         </mxCell>
-        <mxCell id="juego-3" parent="juego" style="text;fontStyle=2;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# jugarRonda(): void" vertex="1">
+        <mxCell id="juego-3" parent="juego" style="text;fontStyle=2;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# registrarJugadores(): void" vertex="1">
           <mxGeometry height="26" width="300" y="60" as="geometry" />
         </mxCell>
+        <mxCell id="juego-4" parent="juego" style="text;fontStyle=2;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# hayJugadoresActivos(): boolean" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="juego-5" parent="juego" style="text;fontStyle=2;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# jugarRonda(): void" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="juego-6" parent="juego" style="text;fontStyle=2;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# finalizarPartida(): void" vertex="1">
+          <mxGeometry height="26" width="300" y="138" as="geometry" />
+        </mxCell>
         <mxCell id="blackjack" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Blackjack" vertex="1">
-          <mxGeometry height="476" width="400" x="0" y="160" as="geometry" />
+          <mxGeometry height="502" width="400" x="0" y="160" as="geometry" />
         </mxCell>
         <mxCell id="blackjack-1" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- croupier: Croupier" vertex="1">
           <mxGeometry height="26" width="400" y="26" as="geometry" />
@@ -49,43 +58,46 @@
         <mxCell id="blackjack-7" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Blackjack(numeroJugadores: int, consola: ConsolaBlackjack)" vertex="1">
           <mxGeometry height="26" width="400" y="164" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-8" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ iniciarPartida(): void" vertex="1">
+        <mxCell id="blackjack-8" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# registrarJugadores(): void" vertex="1">
           <mxGeometry height="26" width="400" y="190" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-9" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# jugarRonda(): void" vertex="1">
+        <mxCell id="blackjack-9" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# hayJugadoresActivos(): boolean" vertex="1">
           <mxGeometry height="26" width="400" y="216" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-10" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- registrarJugadores(): void" vertex="1">
+        <mxCell id="blackjack-10" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# jugarRonda(): void" vertex="1">
           <mxGeometry height="26" width="400" y="242" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-11" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- solicitarApuestas(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
+        <mxCell id="blackjack-11" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# finalizarPartida(): void" vertex="1">
           <mxGeometry height="26" width="400" y="268" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-12" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- turnoJugador(jugador: Jugador): void" vertex="1">
+        <mxCell id="blackjack-12" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- solicitarApuestas(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="400" y="294" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-13" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- turnoCroupier(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
+        <mxCell id="blackjack-13" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- turnoJugador(jugador: Jugador): void" vertex="1">
           <mxGeometry height="26" width="400" y="320" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-14" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- resolverRonda(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
+        <mxCell id="blackjack-14" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- turnoCroupier(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="400" y="346" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-15" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- limpiarRonda(): void" vertex="1">
+        <mxCell id="blackjack-15" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- resolverRonda(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="400" y="372" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-16" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- retirarJugadores(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
+        <mxCell id="blackjack-16" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- limpiarRonda(): void" vertex="1">
           <mxGeometry height="26" width="400" y="398" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-17" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- jugadoresActivos(): List&amp;lt;Jugador&amp;gt;" vertex="1">
+        <mxCell id="blackjack-17" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- retirarJugadores(activos: List&amp;lt;Jugador&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="400" y="424" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-18" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ hayJugadoresActivos(): boolean" vertex="1">
+        <mxCell id="blackjack-18" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- jugadoresActivos(): List&amp;lt;Jugador&amp;gt;" vertex="1">
           <mxGeometry height="26" width="400" y="450" as="geometry" />
         </mxCell>
-        <mxCell id="consola" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="ConsolaBlackjack" vertex="1">
-          <mxGeometry height="528" width="560" x="500" y="160" as="geometry" />
+        <mxCell id="blackjack-19" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- existeJugador(nombre: String): boolean" vertex="1">
+          <mxGeometry height="26" width="400" y="476" as="geometry" />
         </mxCell>
-        <mxCell id="consola-1" parent="consola" style="text;fontStyle=4;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- MAXIMO_JUGADORES: int = 7" vertex="1">
+        <mxCell id="consola" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="ConsolaBlackjack" vertex="1">
+          <mxGeometry height="580" width="560" x="500" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="consola-1" parent="consola" style="text;fontStyle=4;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- MAXIMO_JUGADORES: int = 6" vertex="1">
           <mxGeometry height="26" width="560" y="26" as="geometry" />
         </mxCell>
         <mxCell id="consola-2" parent="consola" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
@@ -97,7 +109,7 @@
         <mxCell id="consola-4" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ pedirApuestaMinima(): int" vertex="1">
           <mxGeometry height="26" width="560" y="86" as="geometry" />
         </mxCell>
-        <mxCell id="consola-5" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ pedirNombreJugador(numero: int): String" vertex="1">
+        <mxCell id="consola-5" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ pedirNombreJugador(numero: int, repetido: boolean): String" vertex="1">
           <mxGeometry height="26" width="560" y="112" as="geometry" />
         </mxCell>
         <mxCell id="consola-6" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ pedirSaldoInicial(apuestaMinima: int): int" vertex="1">
@@ -130,20 +142,26 @@
         <mxCell id="consola-15" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ mostrarFinPartida(): void" vertex="1">
           <mxGeometry height="26" width="560" y="372" as="geometry" />
         </mxCell>
-        <mxCell id="consola-16" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- mostrarMensaje(mensaje: String): void" vertex="1">
+        <mxCell id="consola-16" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- dinero(cantidad: int): String" vertex="1">
           <mxGeometry height="26" width="560" y="398" as="geometry" />
         </mxCell>
-        <mxCell id="consola-17" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- leerEntero(mensaje: String): int" vertex="1">
+        <mxCell id="consola-17" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- describirJugador(jugador: Jugador): String" vertex="1">
           <mxGeometry height="26" width="560" y="424" as="geometry" />
         </mxCell>
-        <mxCell id="consola-18" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- leerEnteroEnRango(mensaje: String, minimo: int, maximo: int): int" vertex="1">
+        <mxCell id="consola-18" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- mostrarMensaje(mensaje: String): void" vertex="1">
           <mxGeometry height="26" width="560" y="450" as="geometry" />
         </mxCell>
-        <mxCell id="consola-19" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- leerTexto(mensaje: String): String" vertex="1">
+        <mxCell id="consola-19" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- leerEntero(mensaje: String): int" vertex="1">
           <mxGeometry height="26" width="560" y="476" as="geometry" />
         </mxCell>
-        <mxCell id="consola-20" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- preguntarSiNo(pregunta: String): boolean" vertex="1">
+        <mxCell id="consola-20" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- leerEnteroEnRango(mensaje: String, minimo: int, maximo: int): int" vertex="1">
           <mxGeometry height="26" width="560" y="502" as="geometry" />
+        </mxCell>
+        <mxCell id="consola-21" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- leerTexto(mensaje: String): String" vertex="1">
+          <mxGeometry height="26" width="560" y="528" as="geometry" />
+        </mxCell>
+        <mxCell id="consola-22" parent="consola" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- preguntarSiNo(pregunta: String): boolean" vertex="1">
+          <mxGeometry height="26" width="560" y="554" as="geometry" />
         </mxCell>
         <mxCell id="keyboard" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Keyboard" vertex="1">
           <mxGeometry height="398" width="260" x="1140" y="160" as="geometry" />
@@ -194,7 +212,7 @@
           <mxGeometry height="26" width="260" y="372" as="geometry" />
         </mxCell>
         <mxCell id="participante" parent="1" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Participante" vertex="1">
-          <mxGeometry height="346" width="300" x="520" y="720" as="geometry" />
+          <mxGeometry height="346" width="300" x="520" y="780" as="geometry" />
         </mxCell>
         <mxCell id="participante-1" parent="participante" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- nombre: String" vertex="1">
           <mxGeometry height="26" width="300" y="26" as="geometry" />
@@ -236,7 +254,7 @@
           <mxGeometry height="26" width="300" y="320" as="geometry" />
         </mxCell>
         <mxCell id="jugador" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Jugador" vertex="1">
-          <mxGeometry height="528" width="380" x="0" y="1140" as="geometry" />
+          <mxGeometry height="502" width="380" x="0" y="1140" as="geometry" />
         </mxCell>
         <mxCell id="jugador-1" parent="jugador" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- saldo: int" vertex="1">
           <mxGeometry height="26" width="380" y="26" as="geometry" />
@@ -294,9 +312,6 @@
         </mxCell>
         <mxCell id="jugador-19" parent="jugador" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ getApuesta(): int" vertex="1">
           <mxGeometry height="26" width="380" y="476" as="geometry" />
-        </mxCell>
-        <mxCell id="jugador-20" parent="jugador" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ toString(): String" vertex="1">
-          <mxGeometry height="26" width="380" y="502" as="geometry" />
         </mxCell>
         <mxCell id="croupier" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Croupier" vertex="1">
           <mxGeometry height="632" width="480" x="460" y="1140" as="geometry" />
@@ -511,10 +526,10 @@
         <mxCell id="rango-14" parent="rango" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="240" y="378" as="geometry" />
         </mxCell>
-        <mxCell id="rango-15" parent="rango" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- valor: int" vertex="1">
+        <mxCell id="rango-15" parent="rango" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- nombre: String" vertex="1">
           <mxGeometry height="26" width="240" y="386" as="geometry" />
         </mxCell>
-        <mxCell id="rango-16" parent="rango" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- nombre: String" vertex="1">
+        <mxCell id="rango-16" parent="rango" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- valor: int" vertex="1">
           <mxGeometry height="26" width="240" y="412" as="geometry" />
         </mxCell>
         <mxCell id="rango-17" parent="rango" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
@@ -635,7 +650,7 @@
           <mxGeometry height="30" width="60" x="-90" y="155" as="geometry" />
         </mxCell>
         <mxCell id="l-app-consola" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="«create»" vertex="1">
-          <mxGeometry height="30" width="60" x="300" y="112" as="geometry" />
+          <mxGeometry height="30" width="60" x="420" y="112" as="geometry" />
         </mxCell>
         <mxCell id="l-blackjack-consola" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="1" vertex="1">
           <mxGeometry height="30" width="60" x="450" y="225" as="geometry" />
@@ -680,7 +695,7 @@
           <mxGeometry height="30" width="70" x="170" y="880" as="geometry" />
         </mxCell>
         <mxCell id="n-participante-mano" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="contiene" vertex="1">
-          <mxGeometry height="30" width="70" x="1100" y="862" as="geometry" />
+          <mxGeometry height="30" width="70" x="1100" y="922" as="geometry" />
         </mxCell>
         <mxCell id="n-croupier-mazo" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="administra" vertex="1">
           <mxGeometry height="30" width="80" x="940" y="1238" as="geometry" />

@@ -7,29 +7,32 @@ import java.util.List;
  */
 public class ConsolaBlackjack {
 
-    private static final int MAXIMO_JUGADORES = 7;
+    private static final int MAXIMO_JUGADORES = 6;
 
     public int pedirNumeroJugadores() {
-        return leerEnteroEnRango("Número de jugadores (1 a " + MAXIMO_JUGADORES + "): ", 1, MAXIMO_JUGADORES);
+        return leerEnteroEnRango("\nNumero de jugadores (1 a " + MAXIMO_JUGADORES + "): ", 1, MAXIMO_JUGADORES);
     }
 
     public int pedirApuestaMinima() {
-        return leerEnteroEnRango("Apuesta mínima de la mesa: ", 1, Integer.MAX_VALUE);
+        return leerEnteroEnRango("\nApuesta minima de la mesa: $", 1, Integer.MAX_VALUE);
     }
 
-    public String pedirNombreJugador(int numero) {
-        return leerTexto("Nombre del jugador " + numero + ": ");
+    public String pedirNombreJugador(int numero, boolean repetido) {
+        if (repetido) {
+            mostrarMensaje("Ese nombre ya esta en uso. Elija otro.");
+        }
+        return leerTexto("\nNombre del jugador " + numero + ": ");
     }
 
     public int pedirSaldoInicial(int apuestaMinima) {
-        return leerEnteroEnRango("Saldo inicial (mínimo " + apuestaMinima + "): ", apuestaMinima, Integer.MAX_VALUE);
+        return leerEnteroEnRango("Saldo inicial (minimo " + dinero(apuestaMinima) + "): $", apuestaMinima, Integer.MAX_VALUE);
     }
 
     /** Anuncia la ronda y pide a un jugador la posición donde cortar el mazo. */
     public int iniciarRonda(int numeroRonda, Jugador cortador, int maximo) {
         mostrarMensaje("\n===========RONDA " + numeroRonda + "===========");
-        int posicion = leerEnteroEnRango(cortador.getNombre() + ", ¿en qué posición desea cortar el mazo? (1 a " + maximo + "): ", 1, maximo);
-        mostrarMensaje("El mazo se corta en la posición " + posicion + ".");
+        int posicion = leerEnteroEnRango("\n\n" + cortador.getNombre() + ", en que posicion desea cortar el mazo? (1 a " + maximo + "): ", 1, maximo);
+        mostrarMensaje("El mazo se corta en la posicion " + posicion + ".");
         return posicion;
     }
 
@@ -40,12 +43,12 @@ public class ConsolaBlackjack {
      */
     public int pedirApuesta(Jugador jugador, int apuestaMinima, boolean repetir) {
         if (repetir) {
-            mostrarMensaje("Apuesta inválida.");
+            mostrarMensaje("Apuesta invalida.");
         } 
         else {
-            mostrarMensaje("Jugador " + jugador.getNombre() + ", su saldo es: " + jugador.getSaldo());
+            mostrarMensaje("\nJugador " + jugador.getNombre() + ", su saldo es: " + dinero(jugador.getSaldo()));
         }
-        return leerEntero("Ingrese su apuesta (mínimo " + apuestaMinima + "): ");
+        return leerEntero("Ingrese su apuesta (minimo " + dinero(apuestaMinima) + "): $");
     }
 
     /**
@@ -64,20 +67,25 @@ public class ConsolaBlackjack {
         }
         mostrarMensaje("----------------------------");
         for (Jugador jugador : jugadores) {
-            mostrarMensaje(jugador.toString());
+            mostrarMensaje(describirJugador(jugador));
         }
         mostrarMensaje("===========================\n");
     }
 
     /** Muestra la mano del jugador y le pregunta si quiere otra carta. */
     public boolean preguntarPedirCarta(Jugador jugador) {
-        mostrarMensaje("Turno de " + jugador.getNombre() + ". Su mano es: " + jugador.getMano()+ " (" + jugador.getPuntos() + " puntos)");
+        mostrarMensaje("\nTurno de " + jugador.getNombre() + ". Su mano es: " + jugador.getMano()+ " (" + jugador.getPuntos() + " puntos)");
         return preguntarSiNo("¿Desea pedir otra carta? (s/n): ");
     }
 
     /** Muestra la mano de un participante después de recibir una carta. */
     public void mostrarParticipante(Participante participante) {
-        mostrarMensaje(participante.toString());
+        if (participante instanceof Jugador jugador) {
+            mostrarMensaje(describirJugador(jugador));
+        }
+        else {
+            mostrarMensaje(participante.toString());
+        }
     }
 
     /** Avisa si el participante terminó su turno con Blackjack, con 21 o pasándose. */
@@ -86,7 +94,7 @@ public class ConsolaBlackjack {
             mostrarMensaje("¡" + participante.getNombre() + " tiene Blackjack!");
         } 
         else if (participante.sePaso()) {
-            mostrarMensaje(participante.getNombre() + " se pasó con " + participante.getPuntos() + " puntos.");
+            mostrarMensaje(participante.getNombre() + " se paso con " + participante.getPuntos() + " puntos.");
         } 
         else if (participante.tiene21()) {
             mostrarMensaje(participante.getNombre() + " tiene 21 puntos.");
@@ -97,15 +105,15 @@ public class ConsolaBlackjack {
     public void mostrarResultado(Jugador jugador, int apuesta, boolean gano, boolean empato) {
         String resultado;
         if (gano) {
-            resultado = "gana su apuesta de " + apuesta;
+            resultado = "gana su apuesta de " + dinero(apuesta);
         } 
         else if (empato) {
-            resultado = "empata y recupera su apuesta de " + apuesta;
+            resultado = "empata y recupera su apuesta de " + dinero(apuesta);
         } 
         else {
-            resultado = "pierde su apuesta de " + apuesta;
+            resultado = "pierde su apuesta de " + dinero(apuesta);
         }
-        mostrarMensaje("Resultado: " + jugador.getNombre() + " " + resultado + " con " + jugador.getPuntos() + " puntos. Saldo actual: " + jugador.getSaldo());
+        mostrarMensaje("Resultado: " + jugador.getNombre() + " " + resultado + " con " + jugador.getPuntos() + " puntos. Saldo actual: " + dinero(jugador.getSaldo()));
     }
 
     /**
@@ -116,16 +124,29 @@ public class ConsolaBlackjack {
     public boolean preguntarContinuar(Jugador jugador, boolean tieneFondos) {
         boolean continua = false;
         if (!tieneFondos) {
-            mostrarMensaje(jugador.getNombre() + " se retira del juego por falta de fondos.");
+            mostrarMensaje("\n" + jugador.getNombre() + " se retira del juego por falta de fondos.");
         } 
         else {
-            continua = preguntarSiNo(jugador.getNombre() + ", ¿desea continuar jugando? (s/n): ");
+            continua = preguntarSiNo("\n" + jugador.getNombre() + ", ¿desea continuar jugando? (s/n): ");
+            if (!continua) {
+                mostrarMensaje("\n" + jugador.getNombre() + " se retira de la mesa.");
+            }
         }
         return continua;
     }
 
     public void mostrarFinPartida() {
-        mostrarMensaje("No hay más jugadores activos. Fin de la partida.");
+        mostrarMensaje("No hay mas jugadores activos. Fin de la partida.");
+    }
+
+    /** Da formato de dinero a una cantidad, por ejemplo 1500 -> "$1,500". */
+    private String dinero(int cantidad) {
+        return String.format("$%,d", cantidad);
+    }
+
+    /** Línea del jugador en la mesa: su mano y puntos (toString), saldo y apuesta. */
+    private String describirJugador(Jugador jugador) {
+        return jugador + " | Saldo: " + dinero(jugador.getSaldo()) + " | Apuesta: " + dinero(jugador.getApuesta());
     }
 
     private void mostrarMensaje(String mensaje) {
@@ -140,7 +161,7 @@ public class ConsolaBlackjack {
     private int leerEnteroEnRango(String mensaje, int minimo, int maximo) {
         int valor = leerEntero(mensaje);
         while (valor < minimo || valor > maximo) {
-            valor = leerEntero("Valor inválido (" + minimo + " a " + maximo + "). " + mensaje);
+            valor = leerEntero("Valor invalido (" + minimo + " a " + maximo + "). " + mensaje);
         }
         return valor;
     }
@@ -153,7 +174,7 @@ public class ConsolaBlackjack {
     private boolean preguntarSiNo(String pregunta) {
         String respuesta = leerTexto(pregunta);
         while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n")) {
-            respuesta = leerTexto("Respuesta inválida. " + pregunta);
+            respuesta = leerTexto("Respuesta invalida. " + pregunta);
         }
         return respuesta.equalsIgnoreCase("s");
     }

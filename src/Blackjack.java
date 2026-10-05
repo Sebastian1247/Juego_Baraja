@@ -2,8 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Controla una partida de Blackjack: registra a los jugadores y conduce cada ronda
- * (corte, apuestas, reparto, turnos y resultados).
+ * Partida de Blackjack: implementa los pasos del ciclo definido en JuegoDeCartas
+ * (registro, rondas y cierre). Cada ronda incluye corte, apuestas, reparto,
+ * turnos y resultados. La entrada y salida la delega en ConsolaBlackjack.
  */
 public class Blackjack extends JuegoDeCartas {
 
@@ -19,16 +20,6 @@ public class Blackjack extends JuegoDeCartas {
         this.croupier = new Croupier("Croupier", new EstrategiaPlantarseEn17(), consola.pedirApuestaMinima());
     }
 
-    /** Registra a los jugadores y juega rondas mientras quede alguno en la mesa. */
-    @Override
-    public void iniciarPartida() {
-        registrarJugadores();
-        while (hayJugadoresActivos()) {
-            jugarRonda();
-        }
-        consola.mostrarFinPartida();
-    }
-
     /** Juega una ronda completa con los jugadores que siguen en la mesa. */
     @Override
     protected void jugarRonda() {
@@ -40,8 +31,10 @@ public class Blackjack extends JuegoDeCartas {
         solicitarApuestas(activos);
         croupier.repartirManoInicial(activos);
         consola.mostrarMesa(croupier, activos);
-        for (Jugador jugador : activos) {
-            turnoJugador(jugador);
+        if(!croupier.tieneBlackjack()) {
+            for (Jugador jugador : activos) {
+                turnoJugador(jugador);
+            }
         }
         turnoCroupier(activos);
         resolverRonda(activos);
@@ -50,13 +43,19 @@ public class Blackjack extends JuegoDeCartas {
     }
 
     /** Pide nombre y saldo inicial de cada jugador. */
-    private void registrarJugadores() {
+    @Override
+    protected void registrarJugadores() {
         for (int i = 0; i < numeroJugadores; i++) {
-            String nombre = consola.pedirNombreJugador(i + 1);
+            String nombre = consola.pedirNombreJugador(i + 1, false);
+            while(existeJugador(nombre)) {
+                nombre = consola.pedirNombreJugador(i + 1, true);
+            }
             int saldo = consola.pedirSaldoInicial(croupier.getApuestaMinima());
             jugadores.add(new Jugador(nombre, saldo));
         }
     }
+
+
 
     /** Pide a cada jugador su apuesta hasta que el croupier la acepte. */
     private void solicitarApuestas(List<Jugador> activos) {
@@ -107,14 +106,18 @@ public class Blackjack extends JuegoDeCartas {
             boolean empato = !gano && croupier.esEmpate(jugador);
             if (gano) {
                 croupier.pagarApuesta(jugador);
-            } 
+            }
+
             else if (empato) {
                 croupier.devolverApuesta(jugador);
-            } 
+            }
+
             else {
                 croupier.cobrarApuesta(jugador);
             }
+
             consola.mostrarResultado(jugador, apuesta, gano, empato);
+            
         }
     }
 
@@ -146,8 +149,26 @@ public class Blackjack extends JuegoDeCartas {
         return activos;
     }
 
+    /** @return true si ya hay un jugador con ese nombre (sin distinguir mayúsculas) */
+    private boolean existeJugador(String nombre) {
+        boolean existe = false;
+        for (Jugador jugador : jugadores) {
+            if (jugador.getNombre().equalsIgnoreCase(nombre.trim())) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
     /** @return true si queda al menos un jugador en la mesa */
-    public boolean hayJugadoresActivos() {
+    @Override
+    protected boolean hayJugadoresActivos() {
         return !jugadoresActivos().isEmpty();
+    }
+
+    /** Anuncia el fin de la partida. */
+    @Override
+    protected void finalizarPartida() {
+        consola.mostrarFinPartida();
     }
 }

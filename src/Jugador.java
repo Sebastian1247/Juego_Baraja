@@ -85,10 +85,4 @@ public class Jugador extends Participante {
     public int getApuesta() {
         return apuesta;
     }
-
-    /** @return nombre, cartas, puntos, saldo y apuesta */
-    @Override
-    public String toString() {
-        return super.toString() + " | Saldo: " + saldo + " | Apuesta: " + apuesta;
-    }
 }
