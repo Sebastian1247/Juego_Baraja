@@ -1,9 +1,9 @@
 public class Jugador extends Participante {
-    private int saldo = 0;
-    private int apuesta = 0;
-    private int posicion = 0;
-    private boolean plantado = false;
-    private boolean retirado = false;
+    private int saldo;
+    private int apuesta;
+    private final int posicion;
+    private boolean plantado;
+    private boolean retirado;
     
     public Jugador(String nombre, int saldo, int posicion) {
         super(nombre);
@@ -20,6 +20,11 @@ public class Jugador extends Participante {
         apuesta = 0;
     }
 
+    public void ganarBlackjack(){
+        saldo += apuesta * 3 / 2;
+        apuesta = 0;
+    }
+
     public void perderApuesta() {
         saldo -= apuesta;
         apuesta = 0;
@@ -29,26 +34,22 @@ public class Jugador extends Participante {
         apuesta = 0;
     }
 
-    public boolean puedeApostar() {
-        return saldo > 0;
+    public void plantarse() {
+        plantado = true;
     }
+
+    public boolean estaPlantado() {
+        return plantado;
+    }
+
     @Override 
     public void limpiarMano(){
         super.limpiarMano();
         plantado = false;
     }
 
-    public void ganarBlackjack(){
-        saldo += apuesta * 3 / 2;
-        apuesta = 0;
-    }
-
-    public void plantarse() {
-        plantado = true;
-    }
-    
-    public boolean estaPlantado() {
-        return plantado;
+    public boolean puedeApostar(int apuestaMinima) {
+        return saldo >= apuestaMinima;
     }
 
     public void retirarse() {
@@ -69,20 +70,6 @@ public class Jugador extends Participante {
 
     public int getPosicion() {
         return this.posicion;
-    }
-
-    public char acciones(char comando) {
-        char jugada = '0';
-        if (comando == 'H') { //Hit: Pide otra carta
-            jugada = 'H';
-        }
-        else if (comando == 'S') { //Stand: Ya no pide cartas
-            jugada = 'S';
-        }
-        else if (comando == 'R') { //Retire: Se retira del juego
-            jugada = 'R';
-        }
-        return jugada;
     }
 
     @Override 

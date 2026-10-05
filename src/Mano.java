@@ -3,7 +3,6 @@ import java.util.List;
 
 public class Mano {
 
-    //private boolean esSuave = false; 
     private final List<Carta> cartas = new ArrayList<>();
 
     public void agregarCarta(Carta carta) {
@@ -50,7 +49,7 @@ public class Mano {
     }
 
     public boolean esBlackjack(){
-        return cartas.size() == 2 && calcularPuntos() == 21;
+        return cantidadCartas() == 2 && calcularPuntos() == 21;
     }
 
     public boolean sePaso(){
@@ -64,43 +63,12 @@ public class Mano {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for(Carta carta : cartas){
-            sb.append(carta.toString()).append(" ");
-        }
-        return sb.toString().trim();
-    }
-    /* 
-    public int calcularPuntos() {
-        int puntos = 0;
-        int cantidadAses = 0;
-        for(Carta carta : cartas) {
-            if(carta.esAs()){
-                puntos += 11;
-                cantidadAses++;
+            if(sb.length() > 0){
+                sb.append(" | ");
             }
-            else if(carta.esFigura()) {
-                puntos += 10;
-            }
-            else {
-                puntos += carta.rango().getValor();
-            }
+            sb.append(carta);
         }
-        while(puntos > 21 && cantidadAses > 0) {
-            puntos -=10;
-            cantidadAses--;
-        }
-        
-        if (cantidadAses > 0) {
-            esSuave = true;
-        }
-        else {
-            esSuave = false;
-        }
-        return puntos;
+        return sb.toString();
     }
 
-    public boolean esSuave() {
-        return esSuave;
-    }
-    */
- 
 }

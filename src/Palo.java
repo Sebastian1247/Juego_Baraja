@@ -1,7 +1,7 @@
 public enum Palo {
     
     CORAZON("♥"),
-    DIAMANTE("♢"),
+    DIAMANTE("♦"),
     TREBOL("♣"),
     PICA("♠");
 

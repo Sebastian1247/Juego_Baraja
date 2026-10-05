@@ -1,8 +1,4 @@
 public abstract class JuegoDeCartas {
-    public void iniciarPartida() {
-
-    }
-    protected void jugarRonda() {
-
-    }
+    public abstract void iniciarPartida();
+    protected abstract void jugarRonda();
 }

@@ -1,6 +1,6 @@
 public abstract class Participante {
-    private String nombre;
-    private Mano mano;
+    private final String nombre;
+    private final Mano mano;
 
     public Participante(String nombre) {
         this.nombre = nombre;
@@ -11,6 +11,12 @@ public abstract class Participante {
     }
     public void limpiarMano() {
         mano.vaciar();
+    }
+    public boolean sePaso(){
+        return mano.sePaso();
+    }
+    public boolean tieneBlackjack(){
+        return mano.esBlackjack();
     }
     public int getPuntos() {
         return mano.calcularPuntos();
