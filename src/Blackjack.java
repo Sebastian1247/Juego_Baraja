@@ -7,9 +7,6 @@ import java.util.List;
  */
 public class Blackjack extends JuegoDeCartas {
 
-    /** Puntuación máxima sin pasarse. */
-    public static final int PUNTOS_BLACKJACK = 21;
-
     private final Croupier croupier;
     private final ConsolaBlackjack consola;
     private final List<Jugador> jugadores = new ArrayList<>();
@@ -57,7 +54,7 @@ public class Blackjack extends JuegoDeCartas {
         for (int i = 0; i < numeroJugadores; i++) {
             String nombre = consola.pedirNombreJugador(i + 1);
             int saldo = consola.pedirSaldoInicial(croupier.getApuestaMinima());
-            jugadores.add(new Jugador(nombre, saldo, i));
+            jugadores.add(new Jugador(nombre, saldo));
         }
     }
 
@@ -78,7 +75,7 @@ public class Blackjack extends JuegoDeCartas {
         if (jugador.tieneBlackjack()) {
             jugador.plantarse();
         }
-        while (!jugador.estaPlantado() && !jugador.sePaso() && jugador.getPuntos() < PUNTOS_BLACKJACK) {
+        while (!jugador.estaPlantado() && !jugador.sePaso() && !jugador.tiene21()) {
             if (consola.preguntarPedirCarta(jugador)) {
                 croupier.repartirCarta(jugador);
                 consola.mostrarParticipante(jugador);

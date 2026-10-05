@@ -1,5 +1,8 @@
+/**
+ * Palos de la baraja inglesa con el símbolo que se muestra en consola.
+ */
 public enum Palo {
-    
+
     CORAZON("♥"),
     DIAMANTE("♦"),
     TREBOL("♣"),
@@ -11,6 +14,7 @@ public enum Palo {
         this.simbolo = simbolo;
     }
 
+    /** @return símbolo del palo, por ejemplo "♥" */
     public String getSimbolo() {
         return simbolo;
     }

@@ -88,7 +88,7 @@ public class ConsolaBlackjack {
         else if (participante.sePaso()) {
             mostrarMensaje(participante.getNombre() + " se pasó con " + participante.getPuntos() + " puntos.");
         } 
-        else if (participante.getPuntos() == Blackjack.PUNTOS_BLACKJACK) {
+        else if (participante.tiene21()) {
             mostrarMensaje(participante.getNombre() + " tiene 21 puntos.");
         }
     }
