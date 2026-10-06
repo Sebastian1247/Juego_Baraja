@@ -10,5 +10,9 @@
             "args": ["-NoExit", "-Command", "chcp 65001 > $null; [Console]::OutputEncoding = [Text.Encoding]::UTF8"]
         }
     },
-    "terminal.integrated.defaultProfile.windows": "PowerShell UTF-8"
+    "terminal.integrated.defaultProfile.windows": "PowerShell UTF-8",
+    "code-runner.executorMap": {
+        "java": "cd \"$workspaceRoot\"; javac -encoding UTF-8 -d bin src/*.java; if ($?) { java -cp bin App }"
+    },
+    "code-runner.runInTerminal": true
 }

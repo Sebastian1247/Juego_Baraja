@@ -13,3 +13,8 @@ Blackjack - Flujo de una partida.docx
 
 # Diagrama de otro proyecto usado como referencia
 JuegoVidaDiagramaClases.drawio
+
+# Archivos de IntelliJ IDEA
+.idea/
+*.iml
+out/
