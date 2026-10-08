@@ -5,8 +5,8 @@
  */
 public abstract class Blackjack extends JuegoDeCartas {
 
-    protected final Croupier croupier;
-    protected final ConsolaBlackjack consola;
+    private final Croupier croupier;
+    private final ConsolaBlackjack consola;
     private int numeroRonda;
 
     protected Blackjack(ConsolaBlackjack consola) {
@@ -89,5 +89,15 @@ public abstract class Blackjack extends JuegoDeCartas {
     @Override
     protected void finalizarPartida() {
         consola.mostrarFinPartida();
+    }
+
+    /** @return el croupier de la mesa */
+    protected Croupier getCroupier() {
+        return croupier;
+    }
+
+    /** @return la vista de la partida */
+    protected ConsolaBlackjack getConsola() {
+        return consola;
     }
 }

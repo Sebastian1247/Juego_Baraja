@@ -17,12 +17,13 @@ public class BlackjackMultijugador extends Blackjack {
     /** Pide nombre y saldo inicial de cada jugador. */
     @Override
     protected void registrarJugadores() {
+        ConsolaBlackjack consola = getConsola();
         for (int i = 0; i < numeroJugadores; i++) {
             String nombre = consola.pedirNombreJugador(i + 1, false);
             while (existeJugador(nombre)) {
                 nombre = consola.pedirNombreJugador(i + 1, true);
             }
-            int saldo = consola.pedirSaldoInicial(croupier.getApuestaMinima());
+            int saldo = consola.pedirSaldoInicial(getCroupier().getApuestaMinima());
             jugadores.add(new Jugador(nombre, saldo));
         }
     }
@@ -36,6 +37,8 @@ public class BlackjackMultijugador extends Blackjack {
     /** Juega una ronda completa con los jugadores que siguen en la mesa. */
     @Override
     protected void jugarRonda() {
+        Croupier croupier = getCroupier();
+        ConsolaBlackjack consola = getConsola();
         List<Jugador> activos = jugadoresActivos();
         prepararRonda();
         for (Jugador jugador : activos) {
@@ -69,7 +72,7 @@ public class BlackjackMultijugador extends Blackjack {
 
     /** Vacía las manos del croupier y de los jugadores. */
     private void limpiarRonda() {
-        croupier.limpiarMano();
+        getCroupier().limpiarMano();
         for (Jugador jugador : jugadores) {
             jugador.limpiarMano();
         }

@@ -12,8 +12,8 @@ public class BlackjackUnJugador extends Blackjack {
     /** Pide el nombre y el saldo inicial del jugador. */
     @Override
     protected void registrarJugadores() {
-        String nombre = consola.pedirNombreJugador(1, false);
-        int saldo = consola.pedirSaldoInicial(croupier.getApuestaMinima());
+        String nombre = getConsola().pedirNombreJugador(1, false);
+        int saldo = getConsola().pedirSaldoInicial(getCroupier().getApuestaMinima());
         jugador = new Jugador(nombre, saldo);
     }
 
@@ -26,6 +26,8 @@ public class BlackjackUnJugador extends Blackjack {
     /** Juega una ronda completa del jugador contra el croupier. */
     @Override
     protected void jugarRonda() {
+        Croupier croupier = getCroupier();
+        ConsolaBlackjack consola = getConsola();
         prepararRonda();
         solicitarApuesta(jugador);
         croupier.repartirManoInicial(jugador);

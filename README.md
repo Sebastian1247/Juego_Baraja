@@ -88,7 +88,7 @@ Se eligió una clase abstracta en lugar de una interfaz con un método `default`
 
 Las dos versiones comparten las reglas y difieren solo en cuántos jugadores hay en la mesa y en cómo se recorren. Por ello `Blackjack` es también una clase abstracta: concentra la preparación de la ronda, las apuestas, los turnos y la liquidación, todos expresados para un jugador a la vez, y deja a `BlackjackUnJugador` y `BlackjackMultijugador` el registro de jugadores, la condición para continuar, el orden de la ronda y la elección del cortador. La primera administra un único `Jugador`; la segunda, una lista. De esta forma ninguna regla del juego está escrita dos veces.
 
-`App` elige la versión según el número de jugadores y la trata como `JuegoDeCartas`, por lo que el ciclo de la partida es el mismo en ambos casos. El croupier y la consola ofrecen variantes sobrecargadas para un jugador y para una lista (`repartirManoInicial` y `mostrarMesa`), de modo que la versión 1 no necesita construir una lista de un solo elemento. Los atributos `croupier` y `consola` de `Blackjack` son `protected final`: las subclases los usan directamente, pero no pueden reemplazarlos.
+`App` elige la versión según el número de jugadores y la trata como `JuegoDeCartas`, por lo que el ciclo de la partida es el mismo en ambos casos. El croupier y la consola ofrecen variantes sobrecargadas para un jugador y para una lista (`repartirManoInicial` y `mostrarMesa`), de modo que la versión 1 no necesita construir una lista de un solo elemento. Los atributos `croupier` y `consola` de `Blackjack` son privados, como el resto de los atributos del proyecto; las subclases acceden a ellos mediante `getCroupier()` y `getConsola()`, que son `protected`. Así las versiones dependen de lo que `Blackjack` ofrece y no de cómo lo almacena.
 
 ### Separación entre lógica y presentación
 
@@ -139,6 +139,8 @@ Reglas comunes a las dos versiones: preparación de la ronda, apuestas, turnos y
 | `resolverJugador(Jugador jugador)` | protected | Determina si el jugador ganó, empató o perdió, y el croupier paga, devuelve o cobra según el caso |
 | `decidirContinuar(Jugador jugador)` | protected | Retira al jugador si ya no cubre la apuesta mínima o decide dejar de jugar |
 | `finalizarPartida()` | protected | Pide a la consola el mensaje de cierre |
+| `getCroupier()` | protected | Croupier de la mesa, para uso de las subclases |
+| `getConsola()` | protected | Vista de la partida, para uso de las subclases |
 
 ### BlackjackUnJugador (hereda de Blackjack)
 

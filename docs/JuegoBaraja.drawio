@@ -35,12 +35,12 @@
           <mxGeometry height="26" width="300" y="138" as="geometry" />
         </mxCell>
         <mxCell id="blackjack" parent="1" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Blackjack" vertex="1">
-          <mxGeometry height="346" width="400" x="0" y="160" as="geometry" />
+          <mxGeometry height="398" width="400" x="0" y="160" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-1" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# croupier: Croupier" vertex="1">
+        <mxCell id="blackjack-1" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- croupier: Croupier" vertex="1">
           <mxGeometry height="26" width="400" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="blackjack-2" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# consola: ConsolaBlackjack" vertex="1">
+        <mxCell id="blackjack-2" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- consola: ConsolaBlackjack" vertex="1">
           <mxGeometry height="26" width="400" y="52" as="geometry" />
         </mxCell>
         <mxCell id="blackjack-3" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- numeroRonda: int" vertex="1">
@@ -75,6 +75,12 @@
         </mxCell>
         <mxCell id="blackjack-13" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# finalizarPartida(): void" vertex="1">
           <mxGeometry height="26" width="400" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="blackjack-14" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# getCroupier(): Croupier" vertex="1">
+          <mxGeometry height="26" width="400" y="346" as="geometry" />
+        </mxCell>
+        <mxCell id="blackjack-15" parent="blackjack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# getConsola(): ConsolaBlackjack" vertex="1">
+          <mxGeometry height="26" width="400" y="372" as="geometry" />
         </mxCell>
         <mxCell id="unjugador" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="BlackjackUnJugador" vertex="1">
           <mxGeometry height="190" width="320" x="-420" y="600" as="geometry" />
@@ -669,7 +675,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e-blackjack-consola" edge="1" parent="1" source="blackjack" target="consola" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.1095;entryDx=0;entryDy=0;endArrow=open;endFill=0;endSize=12;">
+        <mxCell id="e-blackjack-consola" edge="1" parent="1" source="blackjack" target="consola" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.126;entryDx=0;entryDy=0;endArrow=open;endFill=0;endSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e-consola-keyboard" edge="1" parent="1" source="consola" target="keyboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.1;exitDx=0;exitDy=0;entryX=0;entryY=0.1588;entryDx=0;entryDy=0;dashed=1;endArrow=open;endFill=0;endSize=12;">
@@ -724,7 +730,7 @@
           <mxGeometry height="30" width="60" x="420" y="70" as="geometry" />
         </mxCell>
         <mxCell id="l-blackjack-consola" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="1" vertex="1">
-          <mxGeometry height="30" width="30" x="528" y="232" as="geometry" />
+          <mxGeometry height="30" width="30" x="528" y="242" as="geometry" />
         </mxCell>
         <mxCell id="l-consola-keyboard" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="«use»" vertex="1">
           <mxGeometry height="30" width="60" x="1130" y="190" as="geometry" />
@@ -760,7 +766,7 @@
           <mxGeometry height="30" width="30" x="1535" y="1955" as="geometry" />
         </mxCell>
         <mxCell id="n-blackjack-consola" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="interactúa con" vertex="1">
-          <mxGeometry height="30" width="90" x="435" y="197" as="geometry" />
+          <mxGeometry height="30" width="90" x="435" y="207" as="geometry" />
         </mxCell>
         <mxCell id="n-blackjack-croupier" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="dirige" vertex="1">
           <mxGeometry height="30" width="60" x="515" y="800" as="geometry" />
