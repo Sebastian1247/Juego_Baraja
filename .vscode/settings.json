@@ -12,7 +12,7 @@
     },
     "terminal.integrated.defaultProfile.windows": "PowerShell UTF-8",
     "code-runner.executorMap": {
-        "java": "cd \"$workspaceRoot\"; javac -encoding UTF-8 -d bin src/*.java; if ($?) { java -cp bin App }"
+        "java": "cd \"$workspaceRoot/src\"; javac -encoding UTF-8 -d ../bin *.java; if ($?) { java -cp ../bin App }"
     },
     "code-runner.runInTerminal": true
 }

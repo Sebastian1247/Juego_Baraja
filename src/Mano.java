@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Mano {
 
-    /** Puntuación máxima sin pasarse; con dos cartas es Blackjack. */
+    /** Puntuación máxima sin pasarse; con dos cartas (Figura y As) es Blackjack. */
     public static final int PUNTOS_BLACKJACK = 21;
 
     private final List<Carta> cartas = new ArrayList<>();
