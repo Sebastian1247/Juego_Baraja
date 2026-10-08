@@ -1,6 +1,6 @@
 # Juego de Baraja: Blackjack
 
-Implementación en Java de Blackjack para consola, desarrollada para la materia de Tecnologías de Programación. Admite de 1 a 6 jugadores contra un croupier que baraja, reparte, administra las apuestas y juega su propia mano bajo una estrategia fija.
+Implementación en Java de Blackjack para consola, desarrollada para la materia de Tecnologías de Programación. Incluye las dos versiones solicitadas: la versión 1, con un jugador contra el croupier, y la versión 2, con 2 a 6 jugadores en la misma mesa. En ambas, el croupier baraja, reparte, administra las apuestas y juega su propia mano bajo una estrategia fija.
 
 El enunciado anticipa que más adelante se agregarán otros juegos de baraja. Esa condición guió buena parte del diseño: se buscó que la baraja, los participantes y el ciclo de la partida dependieran lo menos posible de las reglas específicas del Blackjack.
 
@@ -19,9 +19,9 @@ En Windows la consola usa por defecto una página de códigos que no incluye los
 
 ## Flujo de una partida
 
-Al iniciar se capturan el número de jugadores, la apuesta mínima de la mesa y el nombre y saldo de cada jugador. Los nombres no pueden repetirse.
+Al iniciar se captura el número de jugadores, que determina la versión: con un jugador se ejecuta la versión 1 y con dos o más, la versión 2. Después se capturan la apuesta mínima de la mesa y el nombre y saldo de cada jugador; en la versión 2 los nombres no pueden repetirse.
 
-Cada ronda sigue la secuencia de una mesa real. El croupier reúne y baraja las 52 cartas, y un jugador elige la posición del corte; ese turno rota entre los jugadores. Después se reciben las apuestas, se reparten dos cartas a cada participante (una de las del croupier queda boca abajo), cada jugador decide si pide carta o se planta, juega el croupier y se liquidan las apuestas.
+Cada ronda sigue la secuencia de una mesa real. El croupier reúne y baraja las 52 cartas, y un jugador elige la posición del corte; en la versión 2 ese turno rota entre los jugadores. Después se reciben las apuestas, se reparten dos cartas a cada participante (una de las del croupier queda boca abajo), cada jugador decide si pide carta o se planta, juega el croupier y se liquidan las apuestas.
 
 Al cierre de la ronda, el jugador que ya no cubre la apuesta mínima abandona la mesa y al resto se le pregunta si desea continuar. La partida termina cuando no queda ningún jugador.
 
@@ -84,27 +84,33 @@ Cada subclase agrega solo su especialización. `Jugador` administra saldo, apues
 
 Se eligió una clase abstracta en lugar de una interfaz con un método `default` por dos motivos. Un método `default` siempre puede sobrescribirse, mientras que `iniciarPartida()` es `final` para que ningún juego altere el orden. Además, en una interfaz todos los métodos son públicos, y aquí los pasos son `protected` para que no se invoquen de forma aislada.
 
+### Versiones del juego
+
+Las dos versiones comparten las reglas y difieren solo en cuántos jugadores hay en la mesa y en cómo se recorren. Por ello `Blackjack` es también una clase abstracta: concentra la preparación de la ronda, las apuestas, los turnos y la liquidación, todos expresados para un jugador a la vez, y deja a `BlackjackUnJugador` y `BlackjackMultijugador` el registro de jugadores, la condición para continuar, el orden de la ronda y la elección del cortador. La primera administra un único `Jugador`; la segunda, una lista. De esta forma ninguna regla del juego está escrita dos veces.
+
+`App` elige la versión según el número de jugadores y la trata como `JuegoDeCartas`, por lo que el ciclo de la partida es el mismo en ambos casos. El croupier y la consola ofrecen variantes sobrecargadas para un jugador y para una lista (`repartirManoInicial` y `mostrarMesa`), de modo que la versión 1 no necesita construir una lista de un solo elemento. Los atributos `croupier` y `consola` de `Blackjack` son `protected final`: las subclases los usan directamente, pero no pueden reemplazarlos.
+
 ### Separación entre lógica y presentación
 
-La entrada y salida está separada en `ConsolaBlackjack` (Pure Fabrication), de modo que `Blackjack` no contiene ningún texto y se limita a coordinar la ronda. Cambiar mensajes, idioma o formato no requiere modificar la lógica del juego.
+La entrada y salida está separada en `ConsolaBlackjack` (Pure Fabrication), de modo que las clases del juego no contienen ningún texto y se limitan a coordinar la ronda. Cambiar mensajes, idioma o formato no requiere modificar la lógica del juego.
 
-Cada método público de la consola corresponde a un momento de la partida, y los que siempre ocurren juntos se agrupan en uno solo (por ejemplo, anunciar la ronda y pedir el corte). Se descartó una consola mínima con métodos genéricos de lectura y escritura porque obligaría a `Blackjack` a construir sus propios mensajes y reintroduciría texto en la lógica.
+Cada método público de la consola corresponde a un momento de la partida, y los que siempre ocurren juntos se agrupan en uno solo (por ejemplo, anunciar la ronda y pedir el corte). Se descartó una consola mínima con métodos genéricos de lectura y escritura porque obligaría al juego a construir sus propios mensajes y reintroduciría texto en la lógica.
 
-La validación quedó dividida según quién conoce cada regla. La consola valida el formato de la entrada (que sea un número, que esté en rango, que la respuesta sea "s" o "n"); el croupier valida que una apuesta respete la mínima y el saldo; y `Blackjack`, que conoce la lista de jugadores, impide nombres repetidos sin distinguir mayúsculas ni espacios.
+La validación quedó dividida según quién conoce cada regla. La consola valida el formato de la entrada (que sea un número, que esté en rango, que la respuesta sea "s" o "n"); el croupier valida que una apuesta respete la mínima y el saldo; y `BlackjackMultijugador`, que conoce la lista de jugadores, impide nombres repetidos sin distinguir mayúsculas ni espacios.
 
 ### Blackjack del croupier en el reparto
 
-Cuando el croupier obtiene Blackjack en el reparto, el resultado de la ronda ya está decidido, así que se omiten los turnos de los jugadores, como ocurre en una mesa real. No se requiere un método adicional: se reutiliza el turno del croupier, que revela su carta y, al tener 21, no pide más cartas.
+Cuando el croupier obtiene Blackjack en el reparto, el resultado de la ronda ya está decidido, así que se omiten los turnos de los jugadores, como ocurre en una mesa real. No se requiere un método adicional: el croupier revela su carta y juega su turno como en cualquier otra ronda, y al tener 21 no pide más cartas.
 
 ## Clases
 
 ### App
 
-Punto de entrada del programa. Configura la salida en UTF-8, crea la vista y el juego, e inicia la partida. El juego se declara con el tipo `JuegoDeCartas`, por lo que cambiar de juego solo implica instanciar otra clase.
+Punto de entrada del programa. Configura la salida en UTF-8, crea la vista, elige la versión del juego según el número de jugadores e inicia la partida. El juego se declara con el tipo `JuegoDeCartas`, por lo que cambiar de versión o de juego solo implica instanciar otra clase.
 
 | Método | Acceso | Descripción |
 |---|---|---|
-| `main(String[] args)` | public static | Configura la salida, crea `ConsolaBlackjack` y `Blackjack`, y llama a `iniciarPartida()` |
+| `main(String[] args)` | public static | Configura la salida, crea `ConsolaBlackjack`, instancia `BlackjackUnJugador` o `BlackjackMultijugador` y llama a `iniciarPartida()` |
 
 ### JuegoDeCartas (clase abstracta)
 
@@ -118,23 +124,46 @@ Define, mediante Template Method, el ciclo común a cualquier juego de cartas. N
 | `jugarRonda()` | protected abstract | Juega una ronda completa |
 | `finalizarPartida()` | protected abstract | Cierra la partida |
 
-### Blackjack (hereda de JuegoDeCartas)
+### Blackjack (clase abstracta, hereda de JuegoDeCartas)
 
-Implementa los pasos del ciclo para el Blackjack y coordina cada ronda. No contiene textos: toda la entrada y salida la delega en `ConsolaBlackjack`.
+Reglas comunes a las dos versiones: preparación de la ronda, apuestas, turnos y liquidación, cada una expresada para un jugador. Implementa `finalizarPartida()` y deja a las subclases los demás pasos del ciclo. No contiene textos: toda la entrada y salida la delega en `ConsolaBlackjack`.
 
 | Método | Acceso | Descripción |
 |---|---|---|
-| `Blackjack(int numeroJugadores, ConsolaBlackjack consola)` | public | Guarda la consola, pide la apuesta mínima y crea al croupier con la estrategia `EstrategiaPlantarseEn17` |
+| `Blackjack(ConsolaBlackjack consola)` | protected | Guarda la consola, pide la apuesta mínima y crea al croupier con la estrategia `EstrategiaPlantarseEn17` |
+| `elegirCortador(int numeroRonda)` | protected abstract | Jugador que corta el mazo en la ronda indicada |
+| `prepararRonda()` | protected | Incrementa el número de ronda, prepara el mazo y lo corta en la posición que elige el cortador |
+| `solicitarApuesta(Jugador jugador)` | protected | Recibe la apuesta del jugador y la vuelve a pedir hasta que el croupier la acepte |
+| `turnoJugador(Jugador jugador)` | protected | Ofrece cartas al jugador hasta que se plante, llegue a 21 o se pase; con Blackjack se planta de inmediato |
+| `turnoCroupier()` | protected | El croupier pide cartas mientras su estrategia lo indique |
+| `resolverJugador(Jugador jugador)` | protected | Determina si el jugador ganó, empató o perdió, y el croupier paga, devuelve o cobra según el caso |
+| `decidirContinuar(Jugador jugador)` | protected | Retira al jugador si ya no cubre la apuesta mínima o decide dejar de jugar |
+| `finalizarPartida()` | protected | Pide a la consola el mensaje de cierre |
+
+### BlackjackUnJugador (hereda de Blackjack)
+
+Versión 1: un jugador contra el croupier. Administra un único `Jugador`, que siempre es quien corta el mazo.
+
+| Método | Acceso | Descripción |
+|---|---|---|
+| `BlackjackUnJugador(ConsolaBlackjack consola)` | public | Crea la versión de un jugador |
+| `registrarJugadores()` | protected | Registra el nombre y el saldo inicial del jugador |
+| `hayJugadoresActivos()` | protected | Verdadero mientras el jugador siga en la mesa |
+| `jugarRonda()` | protected | Prepara la ronda, recibe la apuesta, reparte, juega el turno del jugador (omitido si el croupier tiene Blackjack), revela la carta del croupier y juega su turno, liquida la apuesta, limpia las manos y pregunta si continúa |
+| `elegirCortador(int numeroRonda)` | protected | Devuelve al único jugador |
+
+### BlackjackMultijugador (hereda de Blackjack)
+
+Versión 2: varios jugadores contra el croupier en la misma mesa. Administra la lista de jugadores, impide nombres repetidos y rota el turno de cortar.
+
+| Método | Acceso | Descripción |
+|---|---|---|
+| `BlackjackMultijugador(int numeroJugadores, ConsolaBlackjack consola)` | public | Crea la versión de varios jugadores |
 | `registrarJugadores()` | protected | Registra el nombre y el saldo inicial de cada jugador; vuelve a pedir el nombre cuando ya existe |
 | `hayJugadoresActivos()` | protected | Comprueba que la lista de jugadores activos no esté vacía |
-| `jugarRonda()` | protected | Prepara y corta el mazo, recibe las apuestas, reparte la mano inicial, juega los turnos (omitidos si el croupier tiene Blackjack), resuelve la ronda, limpia las manos y retira a quien corresponda |
-| `finalizarPartida()` | protected | Pide a la consola el mensaje de cierre |
-| `solicitarApuestas(List<Jugador> activos)` | private | Recibe la apuesta de cada jugador y la vuelve a pedir hasta que el croupier la acepte |
-| `turnoJugador(Jugador jugador)` | private | Ofrece cartas al jugador hasta que se plante, llegue a 21 o se pase; con Blackjack se planta de inmediato |
-| `turnoCroupier(List<Jugador> activos)` | private | El croupier revela su carta oculta y sigue pidiendo mientras su estrategia lo indique |
-| `resolverRonda(List<Jugador> activos)` | private | Clasifica a cada jugador como ganador, empate o perdedor, y el croupier paga, devuelve o cobra según el caso |
+| `jugarRonda()` | protected | Aplica a cada jugador activo los pasos de la ronda: apuesta, turno, liquidación y decisión de continuar; el reparto, el turno del croupier y la limpieza se realizan una vez por ronda |
+| `elegirCortador(int numeroRonda)` | protected | Rota el corte entre los jugadores activos según el número de ronda |
 | `limpiarRonda()` | private | Vacía las manos del croupier y de todos los jugadores |
-| `retirarJugadores(List<Jugador> activos)` | private | Saca de la mesa a quien ya no cubre la apuesta mínima o decide dejar de jugar |
 | `jugadoresActivos()` | private | Lista de jugadores que siguen en la mesa |
 | `existeJugador(String nombre)` | private | Busca un jugador registrado con ese nombre, sin distinguir mayúsculas ni espacios |
 
@@ -150,7 +179,8 @@ Vista en consola y única clase que utiliza `Keyboard` y `System.out`. Contiene 
 | `pedirSaldoInicial(int apuestaMinima)` | public | Lee el saldo inicial, que debe cubrir al menos la apuesta mínima |
 | `iniciarRonda(int numeroRonda, Jugador cortador, int maximo)` | public | Anuncia la ronda y pregunta al jugador en turno dónde cortar el mazo |
 | `pedirApuesta(Jugador jugador, int apuestaMinima, boolean repetir)` | public | Muestra el saldo y lee la apuesta; con `repetir` en verdadero, primero avisa que la anterior fue inválida |
-| `mostrarMesa(Croupier croupier, List<Jugador> jugadores)` | public | Presenta la mano del croupier, con su carta oculta mientras esté tapada, y la de cada jugador |
+| `mostrarMesa(Croupier croupier, Jugador jugador)` | public | Presenta la mano del croupier, con su carta oculta mientras esté tapada, y la del jugador (versión 1) |
+| `mostrarMesa(Croupier croupier, List<Jugador> jugadores)` | public | Igual que la anterior, con la mano de cada jugador (versión 2) |
 | `preguntarPedirCarta(Jugador jugador)` | public | Enseña la mano del jugador y le pregunta si quiere otra carta |
 | `mostrarParticipante(Participante participante)` | public | Imprime la mano de un participante después de recibir una carta |
 | `mostrarFinTurno(Participante participante)` | public | Informa si el turno terminó con Blackjack, con 21 o pasándose |
@@ -158,6 +188,7 @@ Vista en consola y única clase que utiliza `Keyboard` y `System.out`. Contiene 
 | `preguntarContinuar(Jugador jugador, boolean tieneFondos)` | public | Avisa que el jugador se quedó sin fondos o, si aún tiene, le pregunta si sigue jugando |
 | `mostrarFinPartida()` | public | Anuncia el fin de la partida |
 | `dinero(int cantidad)` | private | Da formato monetario a una cantidad, por ejemplo `$1,500` |
+| `mostrarCroupierEnMesa(Croupier croupier)` | private | Encabezado común de la mesa: anuncia si se reveló la carta y muestra al croupier |
 | `describirJugador(Jugador jugador)` | private | Arma la línea de un jugador en la mesa: cartas, puntos, saldo y apuesta |
 | `mostrarMensaje(String mensaje)` | private | Escribe una línea en consola |
 | `leerEntero(String mensaje)` | private | Muestra el mensaje y lee un número entero |
@@ -214,7 +245,8 @@ Posee la baraja, reparte, administra las apuestas, juega su propia mano según u
 | `partirMazo(int posicion)` | public | Corta el mazo en la posición elegida por un jugador |
 | `cartasEnMazo()` | public | Cantidad de cartas que quedan en el mazo |
 | `repartirCarta(Participante participante)` | public | Entrega una carta; si el mazo se agotó, lo vuelve a preparar |
-| `repartirManoInicial(List<Jugador> jugadores)` | public | Reparte dos cartas a cada jugador y dos para sí, con la segunda boca abajo |
+| `repartirManoInicial(Jugador jugador)` | public | Reparte dos cartas al jugador y dos para sí, con la segunda boca abajo (versión 1) |
+| `repartirManoInicial(List<Jugador> jugadores)` | public | Reparte dos cartas a cada jugador y dos para sí, con la segunda boca abajo (versión 2) |
 | `debePedirCarta()` | public | Consulta a la estrategia según sus puntos actuales |
 | `revelarCarta()` | public | Destapa la carta oculta |
 | `tieneCartaOculta()` | public | Consulta si la segunda carta sigue tapada |
@@ -226,7 +258,7 @@ Posee la baraja, reparte, administra las apuestas, juega su propia mano según u
 | `pagarApuesta(Jugador jugador)` | public | Paga 3 a 2 con Blackjack y 1 a 1 en cualquier otra victoria |
 | `cobrarApuesta(Jugador jugador)` | public | Cobra la apuesta del jugador que perdió |
 | `devolverApuesta(Jugador jugador)` | public | Regresa la apuesta en caso de empate |
-| `determinarGanadores(List<Jugador> jugadores)` | public | Lista de jugadores que le ganan, por Blackjack o por más puntos sin pasarse |
+| `ganaJugador(Jugador jugador)` | public | Determina si el jugador le gana, por Blackjack o por más puntos sin pasarse |
 | `esEmpate(Jugador jugador)` | public | Hay empate cuando nadie se pasó, tienen los mismos puntos y ambos tienen o no tienen Blackjack |
 
 ### Mano

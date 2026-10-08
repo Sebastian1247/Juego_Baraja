@@ -51,21 +51,16 @@ public class ConsolaBlackjack {
         return leerEntero("Ingrese su apuesta (minimo " + dinero(apuestaMinima) + "): $");
     }
 
-    /**
-     * Muestra la mesa. Si el croupier ya reveló su carta, lo anuncia y muestra su mano completa.
-     */
+    /** Muestra la mesa con un solo jugador (versión 1). */
+    public void mostrarMesa(Croupier croupier, Jugador jugador) {
+        mostrarCroupierEnMesa(croupier);
+        mostrarMensaje(describirJugador(jugador));
+        mostrarMensaje("===========================\n");
+    }
+
+    /** Muestra la mesa con varios jugadores (versión 2). */
     public void mostrarMesa(Croupier croupier, List<Jugador> jugadores) {
-        if (!croupier.tieneCartaOculta()) {
-            mostrarMensaje("El croupier revela su carta oculta.");
-        }
-        mostrarMensaje("\n===========MESA===========");
-        if (croupier.tieneCartaOculta()) {
-            mostrarMensaje(croupier.getNombre() + ": " + croupier.getCartaVisible() + " | [carta oculta]");
-        } 
-        else {
-            mostrarMensaje(croupier.toString());
-        }
-        mostrarMensaje("----------------------------");
+        mostrarCroupierEnMesa(croupier);
         for (Jugador jugador : jugadores) {
             mostrarMensaje(describirJugador(jugador));
         }
@@ -142,6 +137,23 @@ public class ConsolaBlackjack {
     /** Da formato de dinero a una cantidad, por ejemplo 1500 -> "$1,500". */
     private String dinero(int cantidad) {
         return String.format("$%,d", cantidad);
+    }
+
+    /**
+     * Encabezado de la mesa con el croupier. Si ya reveló su carta, lo anuncia y muestra su mano completa.
+     */
+    private void mostrarCroupierEnMesa(Croupier croupier) {
+        if (!croupier.tieneCartaOculta()) {
+            mostrarMensaje("El croupier revela su carta oculta.");
+        }
+        mostrarMensaje("\n===========MESA===========");
+        if (croupier.tieneCartaOculta()) {
+            mostrarMensaje(croupier.getNombre() + ": " + croupier.getCartaVisible() + " | [carta oculta]");
+        }
+        else {
+            mostrarMensaje(croupier.toString());
+        }
+        mostrarMensaje("----------------------------");
     }
 
     /** Línea del jugador en la mesa: su mano y puntos (toString), saldo y apuesta. */

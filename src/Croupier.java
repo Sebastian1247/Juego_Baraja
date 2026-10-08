@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,6 +46,15 @@ public class Croupier extends Participante {
             prepararMazo();
         }
         participante.recibirCarta(mazo.sacarCarta());
+    }
+
+    /** Reparte dos cartas al jugador y dos al croupier; la segunda del croupier queda oculta. */
+    public void repartirManoInicial(Jugador jugador) {
+        cartaOculta = true;
+        repartirCarta(jugador);
+        repartirCarta(jugador);
+        repartirCarta(this);
+        repartirCarta(this);
     }
 
     /** Reparte dos cartas a cada jugador y dos al croupier; la segunda del croupier queda oculta. */
@@ -131,20 +139,14 @@ public class Croupier extends Participante {
     }
 
     /**
-     * Determina qué jugadores le ganan al croupier: con Blackjack (si el croupier no lo tiene)
-     * o con más puntos sin pasarse. Si el croupier se pasa, ganan todos los que no se pasaron.
+     * Determina si el jugador le gana al croupier: con Blackjack (si el croupier no lo tiene)
+     * o con más puntos sin pasarse. Si el croupier se pasa, gana si el jugador no se pasó.
      */
-    public List<Jugador> determinarGanadores(List<Jugador> jugadores) {
-        List<Jugador> ganadores = new ArrayList<>();
-        for (Jugador jugador : jugadores) {
-            boolean ganaPorBlackjack = jugador.tieneBlackjack() && !tieneBlackjack();
-            boolean ganaPorPuntos = !jugador.sePaso()
-                    && (sePaso() || jugador.getPuntos() > getPuntos());
-            if (ganaPorBlackjack || ganaPorPuntos) {
-                ganadores.add(jugador);
-            }
-        }
-        return ganadores;
+    public boolean ganaJugador(Jugador jugador) {
+        boolean ganaPorBlackjack = jugador.tieneBlackjack() && !tieneBlackjack();
+        boolean ganaPorPuntos = !jugador.sePaso()
+                && (sePaso() || jugador.getPuntos() > getPuntos());
+        return ganaPorBlackjack || ganaPorPuntos;
     }
 
     /** @return true si nadie se pasa, tienen los mismos puntos y ambos tienen o no tienen Blackjack */
